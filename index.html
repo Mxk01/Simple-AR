@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+<style>
+  *
+  {
+  margin:0;
+  padding:0;
+  }
+  .demo model-viewer
+  {
+    width:100%;
+    height:100%;
+
+  }
+  .demo
+  {
+    height:100vh;
+    width:100%;
+  }
+
+.btn-container
+{
+  position:absolute;
+  bottom:50px;
+  width:100%;
+  text-align:center;
+}
+button
+{
+  padding:1rem;
+  border:0;
+}
+
+</style>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Import the component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+  </head>
+  <body>
+    <div class="demo">
+
+
+    <model-viewer src="RobotExpressive.glb" id="model" auto-rotate camera-controls skybox-image="spruit_dawn_2k.hdr"  autoplay ar></model-viewer>
+   </div>
+   <div class="btn-container">
+    <button type="button" onclick="stop()" name="button">STOP</button>
+    <button type="button" onclick="run()"  name="button">RUN</button>
+    <button type="button" onclick="wave()"  name="button">WAVE</button>
+    <!-- <button type="button" onclick="jump()"  name="button">JUMP</button> -->
+   </div>
+
+   <script type="text/javascript">
+ function roboSpeak(message)
+ {
+   var synth = window.speechSynthesis;
+   var utterThis = new SpeechSynthesisUtterance(message);
+   synth.speak(utterThis);
+ }
+
+     let model = document.getElementById('model');
+     function stop() {
+       model.animationName = 'stop';
+     }
+     function run() {
+         roboSpeak('Running from the police, dog!! Stop me Click stop')
+       model.animationName = 'Running';
+     }
+     function jump() {
+         roboSpeak('Running from the police, dog!! Stop me Click stop')
+       model.animationName = 'Jumping';
+     }
+     function wave() {
+      roboSpeak('Hello bro! Where the vodka at?')
+       model.animationName = 'Wave';
+     }
+     </script>
+  </body>
+</html>
